@@ -23,7 +23,12 @@ final class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.green400,
           foregroundColor: AppColors.neutral100,
+          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
+      ),
+      textTheme: TextTheme(
+        headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral900),
+        headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral900),
       ),
     );
   }
@@ -49,7 +54,12 @@ final class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.green400,
           foregroundColor: AppColors.neutral100,
+          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
+      ),
+      textTheme: TextTheme(
+        headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral100),
+        headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral100),
       ),
     );
   }
