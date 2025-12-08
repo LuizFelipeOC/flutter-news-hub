@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
 
               Text(
                 'Acesse sua conta para comentar e discurtir sobre as notícias com a comunidade.',
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
 
               const SizedBox(height: 18),

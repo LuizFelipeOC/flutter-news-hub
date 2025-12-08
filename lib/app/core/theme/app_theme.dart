@@ -29,12 +29,21 @@ final class AppTheme {
       textTheme: TextTheme(
         headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral900),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral900),
+        bodyMedium: TextStyle(fontSize: 16, color: AppColors.neutral800),
       ),
       iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: AppColors.neutral800,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.neutral200,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
       ),
     );
@@ -68,7 +77,8 @@ final class AppTheme {
         headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral100),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral100),
         bodyLarge: TextStyle(fontSize: 14, color: AppColors.neutral200),
-        bodyMedium: TextStyle(fontSize: 12, color: AppColors.neutral200),
+        bodyMedium: TextStyle(fontSize: 16, color: AppColors.neutral200),
+        bodySmall: TextStyle(fontSize: 12, color: AppColors.neutral200),
       ),
       iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
       bottomSheetTheme: BottomSheetThemeData(
@@ -76,6 +86,15 @@ final class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.neutral800,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
+        iconColor: AppColors.neutral100,
       ),
     );
   }
