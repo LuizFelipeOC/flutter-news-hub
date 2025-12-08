@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_hub/app/core/constants/app_images.dart';
 import 'package:news_hub/app/core/theme/app_colors.dart';
 
@@ -54,7 +55,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
             SizedBox(
               height: 52,
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text('Explorar notícias')),
+              child: ElevatedButton(
+                onPressed: () {
+                  context.pushReplacement('/home');
+                },
+                child: Text('Explorar notícias'),
+              ),
             ),
           ],
         ),
