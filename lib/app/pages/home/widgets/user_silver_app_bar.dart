@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_hub/app/domain/models/user_model.dart';
+import 'package:news_hub/app/pages/login/login_page.dart';
 
 class UserSilverAppBar extends StatelessWidget {
   final UserModel? user;
@@ -30,12 +31,26 @@ class UserSilverAppBar extends StatelessWidget {
               Text('Bem-vindo ao\nNews Hub', style: textStyle.bodyLarge),
             ],
 
-            CircleAvatar(
-              radius: 18,
-              backgroundColor: colorScheme.surface,
-              child: user != null
-                  ? Text('LF', style: textStyle.headlineLarge)
-                  : Icon(Icons.person, color: colorScheme.onSecondary),
+            GestureDetector(
+              onTap: () {
+                if (user == null) {
+                  showModalBottomSheet(
+                    isDismissible: false,
+                    enableDrag: false,
+                    context: context,
+                    builder: (_) => const LoginPage(),
+                    useSafeArea: false,
+                    isScrollControlled: true,
+                  );
+                }
+              },
+              child: CircleAvatar(
+                radius: 18,
+                backgroundColor: colorScheme.surface,
+                child: user != null
+                    ? Text('LF', style: textStyle.headlineLarge)
+                    : Icon(Icons.person, color: colorScheme.onSecondary),
+              ),
             ),
           ],
         ),

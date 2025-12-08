@@ -16,8 +16,8 @@ final class AppTheme {
         onSecondary: AppColors.neutral400,
         surface: AppColors.neutral200,
         onSurface: AppColors.neutral900,
-        error: AppColors.neutral900,
-        onError: AppColors.neutral100,
+        error: AppColors.red600,
+        onError: AppColors.red500,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -31,6 +31,12 @@ final class AppTheme {
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral900),
       ),
       iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: AppColors.neutral800,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
+      ),
     );
   }
 
@@ -48,8 +54,8 @@ final class AppTheme {
         onSecondary: AppColors.neutral100,
         surface: AppColors.neutral800,
         onSurface: AppColors.neutral800,
-        error: AppColors.neutral100,
-        onError: AppColors.neutral900,
+        error: AppColors.red600,
+        onError: AppColors.red500,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -65,6 +71,12 @@ final class AppTheme {
         bodyMedium: TextStyle(fontSize: 12, color: AppColors.neutral200),
       ),
       iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: AppColors.neutral800,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
+      ),
     );
   }
 }

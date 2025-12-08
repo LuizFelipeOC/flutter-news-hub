@@ -9,5 +9,8 @@ final class AppColors {
   static const neutral800 = Color(0xFF262626);
   static const neutral900 = Color(0xFF171717);
 
+  static const red500 = Color(0xFFef4444);
+  static const red600 = Color(0xFFdc2626);
+
   static const green400 = Color(0xFF4ade80);
 }
