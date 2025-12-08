@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_hub/app/domain/models/user_model.dart';
+import 'package:news_hub/app/data/domain/models/user_model.dart';
 import 'package:news_hub/app/pages/login/login_page.dart';
 
 class UserSilverAppBar extends StatelessWidget {
