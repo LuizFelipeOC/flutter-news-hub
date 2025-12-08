@@ -5,7 +5,7 @@ final class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: AppColors.neutral100,
+      scaffoldBackgroundColor: AppColors.neutral50,
       primaryColor: AppColors.neutral800,
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light,
@@ -13,8 +13,8 @@ final class AppTheme {
         primary: AppColors.neutral900,
         onPrimary: AppColors.neutral100,
         secondary: AppColors.neutral800,
-        onSecondary: AppColors.neutral100,
-        surface: AppColors.neutral100,
+        onSecondary: AppColors.neutral400,
+        surface: AppColors.neutral200,
         onSurface: AppColors.neutral900,
         error: AppColors.neutral900,
         onError: AppColors.neutral100,
@@ -30,6 +30,7 @@ final class AppTheme {
         headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral900),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral900),
       ),
+      iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
     );
   }
 
@@ -46,7 +47,7 @@ final class AppTheme {
         secondary: AppColors.neutral800,
         onSecondary: AppColors.neutral100,
         surface: AppColors.neutral800,
-        onSurface: AppColors.neutral100,
+        onSurface: AppColors.neutral800,
         error: AppColors.neutral100,
         onError: AppColors.neutral900,
       ),
@@ -60,7 +61,10 @@ final class AppTheme {
       textTheme: TextTheme(
         headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral100),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral100),
+        bodyLarge: TextStyle(fontSize: 14, color: AppColors.neutral200),
+        bodyMedium: TextStyle(fontSize: 12, color: AppColors.neutral200),
       ),
+      iconTheme: IconThemeData(color: AppColors.neutral300, size: 18),
     );
   }
 }
