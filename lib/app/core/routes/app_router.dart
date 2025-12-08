@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_hub/app/pages/home/home_page.dart';
 import 'package:news_hub/app/pages/onboarding/onboarding_page.dart';
 
 final GoRouter routerConfiguration = GoRouter(
@@ -8,6 +9,12 @@ final GoRouter routerConfiguration = GoRouter(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return OnboardingPage(key: ValueKey('Onboarding'));
+      },
+    ),
+    GoRoute(
+      path: '/home',
+      builder: (BuildContext context, GoRouterState state) {
+        return HomePage(key: ValueKey('Home'));
       },
     ),
   ],
