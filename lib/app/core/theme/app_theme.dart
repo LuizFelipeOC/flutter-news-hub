@@ -46,6 +46,11 @@ final class AppTheme {
           borderSide: BorderSide.none,
         ),
       ),
+      cardTheme: CardThemeData(
+        color: AppColors.neutral100,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        elevation: 2,
+      ),
     );
   }
 
@@ -95,6 +100,11 @@ final class AppTheme {
           borderSide: BorderSide.none,
         ),
         iconColor: AppColors.neutral100,
+      ),
+      cardTheme: CardThemeData(
+        color: AppColors.neutral800,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        elevation: 2,
       ),
     );
   }
