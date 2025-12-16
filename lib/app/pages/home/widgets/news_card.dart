@@ -8,8 +8,54 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final textStyle = Theme.of(context).textTheme;
+
     return Card(
-      child: Padding(padding: EdgeInsets.all(12.0), child: Text(newsItem.title)),
+      child: Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Text(
+              newsItem.title,
+              style: textStyle.bodyLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+
+            const SizedBox(height: 18),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: colors.primary,
+                      radius: 12,
+                      child: Text(
+                        newsItem.ownerUsername[0],
+                        style: textStyle.bodySmall?.copyWith(
+                          color: colors.onPrimary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Text(newsItem.ownerUsername),
+                  ],
+                ),
+
+                Row(
+                  children: [
+                    Icon(Icons.comment, size: 16, color: colors.onSurfaceVariant),
+                    SizedBox(width: 4),
+                    Text(newsItem.childrenDeepCount.toString()),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
