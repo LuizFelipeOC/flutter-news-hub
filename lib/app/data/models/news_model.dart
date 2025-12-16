@@ -10,6 +10,7 @@ class NewsModel {
   final int tabCoins;
   final num tabCoinsDebit;
   final String ownerUsername;
+  final int childrenDeepCount;
 
   NewsModel({
     required this.id,
@@ -23,6 +24,7 @@ class NewsModel {
     required this.tabCoins,
     required this.tabCoinsDebit,
     required this.ownerUsername,
+    required this.childrenDeepCount,
   });
 
   Map<String, dynamic> toMap() {
@@ -54,6 +56,7 @@ class NewsModel {
       tabCoins: map['tabcoins'] as int,
       tabCoinsDebit: map['tabcoins_debit'] as num,
       ownerUsername: map['owner_username'] as String,
+      childrenDeepCount: map['children_deep_count'] as int,
     );
   }
 }
