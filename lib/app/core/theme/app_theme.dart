@@ -81,7 +81,7 @@ final class AppTheme {
       textTheme: TextTheme(
         headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral100),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral100),
-        bodyLarge: TextStyle(fontSize: 14, color: AppColors.neutral200),
+        bodyLarge: TextStyle(fontSize: 16, color: AppColors.neutral200),
         bodyMedium: TextStyle(fontSize: 16, color: AppColors.neutral200),
         bodySmall: TextStyle(fontSize: 12, color: AppColors.neutral200),
       ),

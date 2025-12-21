@@ -14,7 +14,7 @@ class NewsCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        context.push('/news-page', extra: {'id': newsItem.id, 'userId': newsItem.ownerId});
+        context.push('/news-page', extra: {'id': newsItem.slug, 'userId': newsItem.ownerUsername});
       },
       child: Card(
         child: Padding(

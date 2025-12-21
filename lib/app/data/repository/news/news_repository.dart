@@ -38,4 +38,16 @@ class NewsRepository {
 
     return newsMapped;
   }
+
+  Future<NewsModel> fetchContentById({required String slug, required String userId}) async {
+    Map<String, dynamic> queryParams = {'username': userId, 'slug': slug};
+
+    final response = await httpClient.get(
+      path: 'contents/$userId/$slug',
+      queryParameters: queryParams,
+    );
+
+    final dataDecoder = jsonDecode(response);
+    return NewsModel.fromMap(dataDecoder as Map<String, dynamic>);
+  }
 }

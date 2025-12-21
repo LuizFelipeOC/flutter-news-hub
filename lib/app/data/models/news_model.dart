@@ -5,6 +5,7 @@ class NewsModel {
   final String title;
   final String status;
   final String? sourceUrl;
+  final String body;
   final String createdAt;
   final String updatedAt;
   final int tabCoins;
@@ -25,6 +26,7 @@ class NewsModel {
     required this.tabCoinsDebit,
     required this.ownerUsername,
     required this.childrenDeepCount,
+    required this.body,
   });
 
   Map<String, dynamic> toMap() {
@@ -57,6 +59,7 @@ class NewsModel {
       tabCoinsDebit: map['tabcoins_debit'] as num,
       ownerUsername: map['owner_username'] as String,
       childrenDeepCount: map['children_deep_count'] as int,
+      body: map['body'] ?? '',
     );
   }
 }
