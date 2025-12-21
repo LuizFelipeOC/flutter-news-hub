@@ -47,7 +47,7 @@ final class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        color: AppColors.neutral100,
+        color: AppColors.neutral50,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 2,
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_hub/app/pages/home/home_page.dart';
+import 'package:news_hub/app/pages/news/news_page.dart';
 import 'package:news_hub/app/pages/onboarding/onboarding_page.dart';
 
 final GoRouter routerConfiguration = GoRouter(
@@ -15,6 +16,15 @@ final GoRouter routerConfiguration = GoRouter(
       path: '/home',
       builder: (BuildContext context, GoRouterState state) {
         return HomePage(key: ValueKey('Home'));
+      },
+    ),
+    GoRoute(
+      path: '/news-page',
+      builder: (BuildContext context, GoRouterState state) {
+        final String id = state.uri.queryParameters['id'] ?? '';
+        final String userId = state.uri.queryParameters['userId'] ?? '';
+
+        return NewsPage(key: ValueKey('NewsPage'), id: id, userId: userId);
       },
     ),
   ],
