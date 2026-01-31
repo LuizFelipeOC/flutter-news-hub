@@ -11,14 +11,19 @@ class HttpClient implements IHttpClient {
   final _client = http.Client();
 
   @override
-  Future<String> get({required String path, Map<String, dynamic>? queryParameters}) async {
+  Future<String> get({
+    required String path,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
       final response = await _client.get(
         Uri.parse('$baseUrl$path').replace(queryParameters: queryParameters),
       );
 
       if (response.statusCode < 200 || response.statusCode >= 300) {
-        throw UnknownHttpError(message: 'Failed to load data: ${response.reasonPhrase}');
+        throw UnknownHttpError(
+          message: 'Failed to load data: ${response.reasonPhrase}',
+        );
       }
 
       if (response.statusCode == 404) {
@@ -26,15 +31,20 @@ class HttpClient implements IHttpClient {
       }
 
       if (response.statusCode == 503) {
-        throw CustomSocketException(message: 'Service unavailable. Please try again later.');
+        throw CustomSocketException(
+          message: 'Service unavailable. Please try again later.',
+        );
       }
+
+      print(response.request);
 
       return response.body;
     } on SocketException catch (socketError) {
       throw CustomSocketException(message: socketError.message);
     } on UnknownHttpError catch (unknownError) {
       throw UnknownHttpError(
-        message: 'Occurred an unknown error on connection to the server: ${unknownError.message}',
+        message:
+            'Occurred an unknown error on connection to the server: ${unknownError.message}',
       );
     }
   }

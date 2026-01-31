@@ -79,7 +79,7 @@ final class AppTheme {
         ),
       ),
       textTheme: TextTheme(
-        headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral100),
+        headlineMedium: TextStyle(fontSize: 24, color: AppColors.neutral50),
         headlineLarge: TextStyle(fontSize: 32, color: AppColors.neutral100),
         bodyLarge: TextStyle(fontSize: 16, color: AppColors.neutral200),
         bodyMedium: TextStyle(fontSize: 16, color: AppColors.neutral200),

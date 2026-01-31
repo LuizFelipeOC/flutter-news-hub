@@ -68,6 +68,9 @@ class NewsBody extends StatelessWidget {
           const SizedBox(height: 24),
 
           MarkdownBody(
+            onTapLink: (text, href, title) {
+              print(href);
+            },
             data: newsItem.body,
             styleSheet: MarkdownStyleSheet(
               p: textStyle.bodyLarge?.copyWith(height: 1.6),
