@@ -12,13 +12,15 @@ class NewsContentShimmer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Author shimmer
             Row(
               children: [
                 Container(
                   width: 40,
                   height: 40,
-                  decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Column(
@@ -48,7 +50,6 @@ class NewsContentShimmer extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Title shimmer
             Container(
               width: double.infinity,
               height: 28,
@@ -69,12 +70,13 @@ class NewsContentShimmer extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Body shimmer
             ...List.generate(8, (index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Container(
-                  width: index == 7 ? MediaQuery.of(context).size.width * 0.6 : double.infinity,
+                  width: index == 7
+                      ? MediaQuery.of(context).size.width * 0.6
+                      : double.infinity,
                   height: 16,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -86,7 +88,6 @@ class NewsContentShimmer extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Stats shimmer
             Row(
               children: [
                 Container(

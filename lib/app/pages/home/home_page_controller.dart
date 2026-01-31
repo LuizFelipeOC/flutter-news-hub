@@ -1,12 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:news_hub/app/data/models/news_model.dart';
+import 'package:news_hub/app/data/models/contents/content_request_model.dart';
+import 'package:news_hub/app/data/models/news/news_model.dart';
 import 'package:news_hub/app/data/repository/news/news_repository.dart';
 import 'package:news_hub/app/pages/home/home_page_state.dart';
 
 class HomePageController extends ValueNotifier<IHomePageState> {
   final NewsRepository newsRepository;
 
-  HomePageController({required this.newsRepository}) : super(HomePageInitialState());
+  HomePageController({required this.newsRepository})
+    : super(HomePageInitialState());
 
   List<NewsModel> news = [];
 
@@ -14,7 +16,9 @@ class HomePageController extends ValueNotifier<IHomePageState> {
     try {
       _emitState(HomePageLoadingState());
 
-      final contents = await newsRepository.fetchContents(requestModel: ContentRequestModel());
+      final contents = await newsRepository.fetchContents(
+        requestModel: ContentRequestModel(),
+      );
 
       if (contents.isEmpty) {
         _emitState(HomePageEmptyState());

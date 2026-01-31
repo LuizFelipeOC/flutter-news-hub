@@ -1,4 +1,4 @@
-import 'package:news_hub/app/data/models/news_model.dart';
+import 'package:news_hub/app/data/models/news/news_model.dart';
 
 abstract interface class INewContentState {}
 

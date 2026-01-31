@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_hub/app/data/models/news_model.dart';
+import 'package:news_hub/app/data/models/news/news_model.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({super.key, required this.newsItem});
@@ -14,7 +14,10 @@ class NewsCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        context.push('/news-page', extra: {'id': newsItem.slug, 'userId': newsItem.ownerUsername});
+        context.push(
+          '/news-page',
+          extra: {'id': newsItem.slug, 'userId': newsItem.ownerUsername},
+        );
       },
       child: Card(
         child: Padding(
@@ -23,7 +26,10 @@ class NewsCard extends StatelessWidget {
             children: [
               Text(
                 newsItem.title,
-                style: textStyle.bodyLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
+                style: textStyle.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
 
               const SizedBox(height: 18),
@@ -51,7 +57,11 @@ class NewsCard extends StatelessWidget {
 
                   Row(
                     children: [
-                      Icon(Icons.comment, size: 16, color: colors.onSurfaceVariant),
+                      Icon(
+                        Icons.comment,
+                        size: 16,
+                        color: colors.onSurfaceVariant,
+                      ),
                       SizedBox(width: 4),
                       Text(newsItem.childrenDeepCount.toString()),
                     ],
