@@ -43,27 +43,20 @@ class UserCommentWidget extends StatelessWidget {
                       Flexible(
                         child: Text(
                           commentsModel.ownerUsername,
-                          style: textStyles.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: textStyles.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                       const SizedBox(width: 8),
                       Text(
                         date.formatDate(dateString: commentsModel.createdAt),
-                        style: textStyles.bodySmall?.copyWith(
-                          color: colors.onSurfaceVariant,
-                        ),
+                        style: textStyles.bodySmall?.copyWith(color: colors.onSurfaceVariant),
                       ),
                     ],
                   ),
                   const SizedBox(height: 6),
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 10,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                     decoration: BoxDecoration(
                       color: colors.surface,
                       borderRadius: BorderRadius.circular(12),
@@ -73,12 +66,8 @@ class UserCommentWidget extends StatelessWidget {
                       selectable: true,
                       styleSheet: MarkdownStyleSheet(
                         p: textStyles.bodyMedium?.copyWith(height: 1.4),
-                        strong: textStyles.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                        em: textStyles.bodyMedium?.copyWith(
-                          fontStyle: FontStyle.italic,
-                        ),
+                        strong: textStyles.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
+                        em: textStyles.bodyMedium?.copyWith(fontStyle: FontStyle.italic),
                       ),
                     ),
                   ),

@@ -50,7 +50,7 @@ class NewsModel {
       id: map['id'] as String,
       ownerId: map['owner_id'] as String,
       slug: map['slug'] as String,
-      title: map['title'] as String,
+      title: map['title'] ?? '',
       status: map['status'] as String,
       sourceUrl: map['source_url'] != null ? map['source_url'] as String : null,
       createdAt: map['created_at'] as String,
