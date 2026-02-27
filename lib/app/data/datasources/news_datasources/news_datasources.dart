@@ -8,8 +8,8 @@ class NewsDatasources {
 
   const NewsDatasources({required this.network});
 
-  Future<NewsModel> getNews({required NewsRequestModel request}) async {
-    final result = await network.get(
+  Future<List<NewsModel>> getNews({required NewsRequestModel request}) async {
+    final result = await network.get<List<Map<String, dynamic>>>(
       url: 'contents',
       parameters: {
         'page': request.page.toString(),
@@ -20,7 +20,8 @@ class NewsDatasources {
 
     switch (result) {
       case Success(data: final data):
-        return NewsModel.fromMap(data as Map<String, dynamic>);
+        final news = data.map((value) => NewsModel.fromMap(value)).toList();
+        return news;
       case Failure(networkException: final error):
         throw error;
     }
