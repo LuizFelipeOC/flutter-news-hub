@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:news_hub/app/core/constants/constants.dart';
 import 'package:news_hub/app/core/network/network_exception.dart';
 import 'package:news_hub/app/core/network/network_interface.dart';
 import 'package:news_hub/app/core/network/network_result.dart';
@@ -7,10 +8,13 @@ import 'package:http/http.dart' as http;
 
 class NetworkService implements NetworkInterface {
   final http.Client client = http.Client();
+  final String baseUrl = Constants.baseURL;
 
   @override
   Future<NetworkResult<T>> get<T>({required String url, Map<String, String>? parameters}) async {
-    final apiResponse = await client.get(Uri.parse(url), headers: parameters);
+    final urlParse = Uri.parse('$baseUrl$url').replace(queryParameters: parameters);
+
+    final apiResponse = await client.get(urlParse);
 
     if (apiResponse.statusCode == 404) {
       return Failure(networkException: NotFoundException());
