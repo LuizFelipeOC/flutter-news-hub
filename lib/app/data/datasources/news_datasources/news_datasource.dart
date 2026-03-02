@@ -3,10 +3,10 @@ import 'package:news_hub/app/core/network/network_result.dart';
 import 'package:news_hub/app/data/models/news/new_request_model.dart';
 import 'package:news_hub/app/data/models/news/news_model.dart';
 
-class NewsDatasources {
+class NewsDatasource {
   final NetworkInterface network;
 
-  const NewsDatasources({required this.network});
+  const NewsDatasource({required this.network});
 
   Future<List<NewsModel>> getNews({required NewsRequestModel request}) async {
     final result = await network.get<List<Map<String, dynamic>>>(
