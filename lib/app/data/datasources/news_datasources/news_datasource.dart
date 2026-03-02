@@ -9,12 +9,12 @@ class NewsDatasource {
   const NewsDatasource({required this.network});
 
   Future<List<NewsModel>> getNews({required NewsRequestModel request}) async {
-    final result = await network.get<List<Map<String, dynamic>>>(
+    final result = await network.get<List<dynamic>>(
       url: 'contents',
       parameters: {
         'page': request.page.toString(),
         'per_page': request.perPage.toString(),
-        'strategy': request.strategy.name,
+        'strategy': 'new',
       },
     );
 

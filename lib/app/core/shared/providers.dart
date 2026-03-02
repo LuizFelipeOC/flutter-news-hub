@@ -13,7 +13,7 @@ import 'package:provider/single_child_widget.dart';
 
 final List<SingleChildWidget> providers = [
   Provider<IHttpClient>(create: (_) => HttpClient()),
-  Provider<NetworkInterface>(create: (ctx) => ctx.read<NetworkService>()),
+  Provider<NetworkInterface>(create: (_) => NetworkService()),
   Provider(create: (ctx) => NewsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(
     create: (ctx) => NewsRepository(
