@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_hub/app/data/models/users_contents/user_contents_paramerters.dart';
+import 'package:news_hub/app/pages/user_contents/user_contents_controller.dart';
+import 'package:provider/provider.dart';
 
 class UserContentsPage extends StatefulWidget {
   final UserContentsParamerters userContentsParamerters;
@@ -11,8 +13,16 @@ class UserContentsPage extends StatefulWidget {
 }
 
 class _UserContentsPageState extends State<UserContentsPage> {
+  late UserContentsController userContentsController;
+
   @override
   void initState() {
+    userContentsController = context.read<UserContentsController>();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      userContentsController.loadUserContents(parameters: widget.userContentsParamerters);
+    });
+
     super.initState();
   }
 
