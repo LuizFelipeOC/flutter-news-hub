@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:news_hub/app/core/services/htttp/http_client_interface.dart';
 import 'package:news_hub/app/data/datasources/news_datasources/news_datasource.dart';
+import 'package:news_hub/app/data/models/news/new_detail_request_model.dart';
 import 'package:news_hub/app/data/models/news/new_request_model.dart';
 import 'package:news_hub/app/data/models/news/news_model.dart';
 
@@ -16,14 +15,8 @@ class NewsRepository {
   }
 
   Future<NewsModel> fetchContentById({required String slug, required String userId}) async {
-    Map<String, dynamic> queryParams = {'username': userId, 'slug': slug};
-
-    final response = await httpClient.get(
-      path: 'contents/$userId/$slug',
-      queryParameters: queryParams,
+    return await newsDatasources.getNewsById(
+      request: NewDetailRequestModel(username: userId, slug: slug),
     );
-
-    final dataDecoder = jsonDecode(response);
-    return NewsModel.fromMap(dataDecoder as Map<String, dynamic>);
   }
 }
