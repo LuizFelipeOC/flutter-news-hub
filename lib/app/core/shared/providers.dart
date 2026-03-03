@@ -4,6 +4,7 @@ import 'package:news_hub/app/core/services/htttp/http_client.dart';
 import 'package:news_hub/app/core/services/htttp/http_client_interface.dart';
 import 'package:news_hub/app/data/datasources/comments_datasource/comments_datasource.dart';
 import 'package:news_hub/app/data/datasources/news_datasources/news_datasource.dart';
+import 'package:news_hub/app/data/datasources/user_contents_datasource/user_contents_datasource.dart';
 import 'package:news_hub/app/data/repository/comments/comments_repository.dart';
 import 'package:news_hub/app/data/repository/news/news_repository.dart';
 import 'package:news_hub/app/data/repository/users_contents/user_contents_repository.dart';
@@ -17,6 +18,7 @@ final List<SingleChildWidget> providers = [
   Provider<NetworkInterface>(create: (_) => NetworkService()),
   Provider(create: (ctx) => NewsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(create: (ctx) => CommentsDatasource(network: ctx.read<NetworkInterface>())),
+  Provider(create: (ctx) => UserContentsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(
     create: (ctx) => NewsRepository(
       httpClient: ctx.read<IHttpClient>(),
@@ -24,7 +26,7 @@ final List<SingleChildWidget> providers = [
     ),
   ),
   Provider(create: (ctx) => CommentsRepository(datasource: ctx.read<CommentsDatasource>())),
-  Provider(create: (ctx) => UserContentsRepository(httpClient: ctx.read<IHttpClient>())),
+  Provider(create: (ctx) => UserContentsRepository(datasource: ctx.read<UserContentsDatasource>())),
   ChangeNotifierProvider<HomePageController>(
     create: (ctx) => HomePageController(newsRepository: ctx.read<NewsRepository>()),
   ),
