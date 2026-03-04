@@ -1,6 +1,8 @@
 import 'package:news_hub/app/core/network/network_interface.dart';
 import 'package:news_hub/app/core/network/network_service.dart';
 import 'package:news_hub/app/data/datasources/comments_datasource/comments_datasource.dart';
+import 'package:news_hub/app/data/datasources/local/local_storage_interface.dart';
+import 'package:news_hub/app/data/datasources/local/shared_preferences_storage.dart';
 import 'package:news_hub/app/data/datasources/news_datasources/news_datasource.dart';
 import 'package:news_hub/app/data/datasources/user_contents_datasource/user_contents_datasource.dart';
 import 'package:news_hub/app/data/repository/comments/comments_repository.dart';
@@ -14,6 +16,7 @@ import 'package:provider/single_child_widget.dart';
 
 final List<SingleChildWidget> providers = [
   Provider<NetworkInterface>(create: (_) => NetworkService()),
+  Provider<LocalStorageInterface>(create: (_) => SharedPreferencesStorage()),
   Provider(create: (ctx) => NewsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(create: (ctx) => CommentsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(create: (ctx) => UserContentsDatasource(network: ctx.read<NetworkInterface>())),
