@@ -4,6 +4,7 @@ import 'package:news_hub/app/data/models/users_contents/user_contents_paramerter
 import 'package:news_hub/app/pages/home/home_page.dart';
 import 'package:news_hub/app/pages/new_content/news_content_page.dart';
 import 'package:news_hub/app/pages/onboarding/onboarding_page.dart';
+import 'package:news_hub/app/pages/splash/splash_page.dart';
 import 'package:news_hub/app/pages/user_contents/user_contents_page.dart';
 
 final GoRouter routerConfiguration = GoRouter(
@@ -11,8 +12,12 @@ final GoRouter routerConfiguration = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return OnboardingPage(key: ValueKey('Onboarding'));
+        return SplashPage(key: ValueKey('Splash'));
       },
+    ),
+    GoRoute(
+      path: '/onboarding',
+      builder: (context, state) => OnboardingPage(key: ValueKey('Onboarding')),
     ),
     GoRoute(
       path: '/home',
