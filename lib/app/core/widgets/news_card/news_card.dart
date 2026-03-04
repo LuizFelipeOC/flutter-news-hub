@@ -12,24 +12,21 @@ class NewsCard extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final textStyle = Theme.of(context).textTheme;
 
+    void navigateToNewsPage() {
+      context.push('/news-page', extra: {'id': newsItem.slug, 'userId': newsItem.ownerUsername});
+    }
+
     return GestureDetector(
-      onTap: () {
-        context.push(
-          '/news-page',
-          extra: {'id': newsItem.slug, 'userId': newsItem.ownerUsername},
-        );
-      },
+      onTap: navigateToNewsPage,
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 newsItem.title,
-                style: textStyle.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                style: textStyle.bodyLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
               ),
 
               const SizedBox(height: 18),
@@ -57,11 +54,7 @@ class NewsCard extends StatelessWidget {
 
                   Row(
                     children: [
-                      Icon(
-                        Icons.comment,
-                        size: 16,
-                        color: colors.onSurfaceVariant,
-                      ),
+                      Icon(Icons.comment, size: 16, color: colors.onSurfaceVariant),
                       SizedBox(width: 4),
                       Text(newsItem.childrenDeepCount.toString()),
                     ],
