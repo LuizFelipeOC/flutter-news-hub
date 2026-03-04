@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_hub/app/core/widgets/news_card/news_card_shimmer.dart';
 import 'package:news_hub/app/pages/home/home_page_controller.dart';
 import 'package:news_hub/app/pages/home/home_page_state.dart';
 import 'package:news_hub/app/core/widgets/news_card/news_card.dart';
 import 'package:news_hub/app/pages/home/widgets/user_silver_app_bar.dart';
-import 'package:news_hub/app/pages/home/widgets/shimmer_widgets.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

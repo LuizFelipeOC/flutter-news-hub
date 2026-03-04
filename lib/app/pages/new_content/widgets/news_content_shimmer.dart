@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_hub/app/pages/home/widgets/shimmer_widgets.dart';
+import 'package:news_hub/app/core/widgets/shimmer_wrapper/shimmer_wrapper.dart';
 
 class NewsContentShimmer extends StatelessWidget {
   const NewsContentShimmer({super.key});
@@ -17,10 +17,7 @@ class NewsContentShimmer extends StatelessWidget {
                 Container(
                   width: 40,
                   height: 40,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
+                  decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 ),
                 const SizedBox(width: 12),
                 Column(
@@ -74,9 +71,7 @@ class NewsContentShimmer extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Container(
-                  width: index == 7
-                      ? MediaQuery.of(context).size.width * 0.6
-                      : double.infinity,
+                  width: index == 7 ? MediaQuery.of(context).size.width * 0.6 : double.infinity,
                   height: 16,
                   decoration: BoxDecoration(
                     color: Colors.white,
