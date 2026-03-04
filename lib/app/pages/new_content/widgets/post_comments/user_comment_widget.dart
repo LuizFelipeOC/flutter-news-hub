@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_hub/app/core/utils/date_formart.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:news_hub/app/core/widgets/user_avatars/user_avatars.dart';
 import 'package:news_hub/app/data/models/comments/coomments_model.dart';
+import 'package:news_hub/app/data/models/users_contents/user_contents_paramerters.dart';
 
 class UserCommentWidget extends StatelessWidget {
   final CommentsModel commentsModel;
@@ -14,25 +17,22 @@ class UserCommentWidget extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final date = DateFormart();
 
+    void navigateToUserContent() {
+      final parameters = UserContentsParamerters(
+        userName: commentsModel.ownerUsername,
+        strategy: ['new', 'old', 'relevant'],
+      );
+
+      context.push('/users-content', extra: {'userContentsParamerters': parameters});
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 20,
-              backgroundColor: colors.primary,
-              child: Text(
-                commentsModel.ownerUsername.isNotEmpty
-                    ? commentsModel.ownerUsername[0].toUpperCase()
-                    : '?',
-                style: textStyles.bodyMedium?.copyWith(
-                  color: colors.onPrimary,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            UserAvatars(userName: commentsModel.ownerUsername, onTap: navigateToUserContent),
             const SizedBox(width: 8),
             Expanded(
               child: Column(

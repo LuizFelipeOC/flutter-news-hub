@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_hub/app/core/utils/date_formart.dart';
+import 'package:news_hub/app/core/widgets/user_avatars/user_avatars.dart';
 import 'package:news_hub/app/data/models/news/news_model.dart';
+import 'package:news_hub/app/data/models/users_contents/user_contents_paramerters.dart';
 
 class NewsBody extends StatelessWidget {
   final NewsModel newsItem;
@@ -14,6 +17,15 @@ class NewsBody extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme;
     final date = DateFormart();
 
+    void navigateToUserContent() {
+      final parameters = UserContentsParamerters(
+        userName: newsItem.ownerUsername,
+        strategy: ['new', 'old', 'relevant'],
+      );
+
+      context.push('/users-content', extra: {'userContentsParamerters': parameters});
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -21,17 +33,7 @@ class NewsBody extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: colors.primary,
-                child: Text(
-                  newsItem.ownerUsername[0].toUpperCase(),
-                  style: textStyle.bodyMedium?.copyWith(
-                    color: colors.onPrimary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              UserAvatars(userName: newsItem.ownerUsername, onTap: navigateToUserContent),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -39,15 +41,11 @@ class NewsBody extends StatelessWidget {
                   children: [
                     Text(
                       newsItem.ownerUsername,
-                      style: textStyle.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: textStyle.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
                       date.formatDate(dateString: newsItem.createdAt),
-                      style: textStyle.bodySmall?.copyWith(
-                        color: colors.onSurfaceVariant,
-                      ),
+                      style: textStyle.bodySmall?.copyWith(color: colors.onSurfaceVariant),
                     ),
                   ],
                 ),
@@ -59,10 +57,7 @@ class NewsBody extends StatelessWidget {
 
           Text(
             newsItem.title,
-            style: textStyle.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              height: 1.2,
-            ),
+            style: textStyle.headlineMedium?.copyWith(fontWeight: FontWeight.bold, height: 1.2),
           ),
 
           const SizedBox(height: 24),
@@ -74,19 +69,11 @@ class NewsBody extends StatelessWidget {
             data: newsItem.body,
             styleSheet: MarkdownStyleSheet(
               p: textStyle.bodyLarge?.copyWith(height: 1.6),
-              h1: textStyle.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-              h2: textStyle.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-              h3: textStyle.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              h1: textStyle.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+              h2: textStyle.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+              h3: textStyle.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
 
-              strong: textStyle.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              strong: textStyle.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
               em: textStyle.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
               code: textStyle.bodyMedium?.copyWith(
                 fontFamily: 'monospace',
@@ -96,13 +83,9 @@ class NewsBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: colors.outlineVariant),
               ),
-              blockquote: textStyle.bodyLarge?.copyWith(
-                fontStyle: FontStyle.italic,
-              ),
+              blockquote: textStyle.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
               blockquoteDecoration: BoxDecoration(
-                border: Border(
-                  left: BorderSide(color: colors.primary, width: 4),
-                ),
+                border: Border(left: BorderSide(color: colors.primary, width: 4)),
               ),
               listBullet: textStyle.bodyLarge?.copyWith(),
             ),
