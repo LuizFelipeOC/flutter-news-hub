@@ -5,11 +5,13 @@ import 'package:news_hub/app/data/datasources/local/local_storage_interface.dart
 import 'package:news_hub/app/data/datasources/local/shared_preferences_storage.dart';
 import 'package:news_hub/app/data/datasources/news_datasources/news_datasource.dart';
 import 'package:news_hub/app/data/datasources/user_contents_datasource/user_contents_datasource.dart';
+import 'package:news_hub/app/data/repository/app_preferences/app_preferences_repository.dart';
 import 'package:news_hub/app/data/repository/comments/comments_repository.dart';
 import 'package:news_hub/app/data/repository/news/news_repository.dart';
 import 'package:news_hub/app/data/repository/users_contents/user_contents_repository.dart';
 import 'package:news_hub/app/pages/home/home_page_controller.dart';
 import 'package:news_hub/app/pages/new_content/new_content_controller.dart';
+import 'package:news_hub/app/pages/splash/splash_controller.dart';
 import 'package:news_hub/app/pages/user_contents/user_contents_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -17,6 +19,10 @@ import 'package:provider/single_child_widget.dart';
 final List<SingleChildWidget> providers = [
   Provider<NetworkInterface>(create: (_) => NetworkService()),
   Provider<LocalStorageInterface>(create: (_) => SharedPreferencesStorage()),
+  Provider(
+    create: (ctx) => AppPreferencesRepository(localStorage: ctx.read<LocalStorageInterface>()),
+  ),
+
   Provider(create: (ctx) => NewsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(create: (ctx) => CommentsDatasource(network: ctx.read<NetworkInterface>())),
   Provider(create: (ctx) => UserContentsDatasource(network: ctx.read<NetworkInterface>())),
@@ -34,5 +40,9 @@ final List<SingleChildWidget> providers = [
   ),
   ChangeNotifierProvider(
     create: (ctx) => UserContentsController(repository: ctx.read<UserContentsRepository>()),
+  ),
+  ChangeNotifierProvider(
+    create: (ctx) =>
+        SplashController(appPreferencesRepository: ctx.read<AppPreferencesRepository>()),
   ),
 ];
