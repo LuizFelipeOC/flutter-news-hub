@@ -54,6 +54,15 @@ final class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 2,
       ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.neutral100,
+        labelStyle: TextStyle(color: AppColors.neutral900),
+        side: BorderSide(color: AppColors.neutral300),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        selectedColor: AppColors.neutral800,
+        secondaryLabelStyle: TextStyle(color: AppColors.withe),
+        showCheckmark: false,
+      ),
     );
   }
 
@@ -109,6 +118,14 @@ final class AppTheme {
         color: AppColors.neutral800,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 2,
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.neutral800,
+        labelStyle: TextStyle(color: AppColors.neutral100),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        selectedColor: AppColors.neutral100,
+        secondaryLabelStyle: TextStyle(color: AppColors.neutral900),
+        showCheckmark: false,
       ),
     );
   }

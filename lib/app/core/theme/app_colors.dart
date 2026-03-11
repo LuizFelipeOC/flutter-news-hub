@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 final class AppColors {
+  static const withe = Color(0xFFFFFFFF);
+
   static const neutral50 = Color(0xFFfafafa);
   static const neutral100 = Color(0xFFf5f5f5);
   static const neutral200 = Color(0xFFe5e5e5);
