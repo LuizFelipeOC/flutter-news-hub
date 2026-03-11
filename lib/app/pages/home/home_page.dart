@@ -29,10 +29,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    controller.scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
+          controller: controller.scrollController,
           slivers: [
             UserSilverAppBar(),
 
@@ -73,27 +80,19 @@ class _HomePageState extends State<HomePage> {
                 if (state is HomePageLoadedState) {
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 26),
-                    sliver: SliverList.builder(
-                      itemCount: state.news.length,
-                      itemBuilder: (context, index) {
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        if (index >= state.news.length) {
+                          return const Padding(
+                            padding: EdgeInsets.all(24),
+                            child: Center(child: CircularProgressIndicator()),
+                          );
+                        }
+
                         final newsItem = state.news[index];
 
-                        return TweenAnimationBuilder<double>(
-                          key: ValueKey('news_${newsItem.id}'),
-                          duration: Duration(milliseconds: 300 + (index * 100)),
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          curve: Curves.easeOutCubic,
-                          builder: (context, value, child) {
-                            return Transform.translate(
-                              offset: Offset(0, (1 - value) * 20),
-                              child: Opacity(
-                                opacity: value,
-                                child: NewsCard(newsItem: newsItem),
-                              ),
-                            );
-                          },
-                        );
-                      },
+                        return NewsCard(newsItem: newsItem);
+                      }, childCount: state.news.length + (controller.hasMore ? 1 : 0)),
                     ),
                   );
                 }
