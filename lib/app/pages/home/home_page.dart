@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_hub/app/core/widgets/categories_filter/categories_filter.dart';
 import 'package:news_hub/app/core/widgets/news_card/news_card_shimmer.dart';
 import 'package:news_hub/app/pages/home/home_page_controller.dart';
 import 'package:news_hub/app/pages/home/home_page_state.dart';
@@ -34,7 +35,16 @@ class _HomePageState extends State<HomePage> {
         child: CustomScrollView(
           slivers: [
             UserSilverAppBar(),
-            SliverToBoxAdapter(child: const SizedBox(height: 20)),
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
+                  height: 64,
+                  child: CategoriesFilter(onCategorySelected: (value) {}),
+                ),
+              ),
+            ),
 
             ValueListenableBuilder(
               valueListenable: controller,
