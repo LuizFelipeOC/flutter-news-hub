@@ -41,7 +41,11 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SizedBox(
                   height: 64,
-                  child: CategoriesFilter(onCategorySelected: (value) {}),
+                  child: CategoriesFilter(
+                    onCategorySelected: (value) {
+                      controller.loadNewsByCategory(value.id);
+                    },
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_hub/app/core/enums/news_enums/categories_enum.dart';
 import 'package:news_hub/app/core/network/network_exception.dart';
 import 'package:news_hub/app/data/models/news/new_request_model.dart';
 import 'package:news_hub/app/data/repository/news/news_repository.dart';
@@ -15,7 +14,28 @@ class HomePageController extends ValueNotifier<IHomePageState> {
 
     try {
       final newsData = await newsRepository.getNews(
-        request: NewsRequestModel(page: 1, perPage: 20, strategy: CategoriesEnum.newContent),
+        request: NewsRequestModel(page: 1, perPage: 20, strategy: 'new'),
+      );
+
+      if (newsData.isEmpty) {
+        _emitState(HomePageEmptyState());
+        return;
+      }
+
+      _emitState(HomePageLoadedState(news: newsData));
+    } on NetworkException catch (error) {
+      _emitState(HomePageErrorState(message: error.message));
+    } catch (_) {
+      _emitState(HomePageErrorState(message: 'Erro ao carregar notícias.'));
+    }
+  }
+
+  Future<void> loadNewsByCategory(String category) async {
+    _emitState(HomePageLoadingState());
+
+    try {
+      final newsData = await newsRepository.getNews(
+        request: NewsRequestModel(page: 1, perPage: 20, strategy: category),
       );
 
       if (newsData.isEmpty) {

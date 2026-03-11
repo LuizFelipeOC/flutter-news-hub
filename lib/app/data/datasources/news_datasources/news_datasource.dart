@@ -15,7 +15,7 @@ class NewsDatasource {
       parameters: {
         'page': request.page.toString(),
         'per_page': request.perPage.toString(),
-        'strategy': 'new',
+        'strategy': request.strategy,
       },
     );
 
