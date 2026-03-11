@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_hub/app/core/widgets/categories_filter/categories_filter.dart';
 import 'package:news_hub/app/core/widgets/news_card/news_card_shimmer.dart';
@@ -41,6 +42,11 @@ class _HomePageState extends State<HomePage> {
         child: CustomScrollView(
           controller: controller.scrollController,
           slivers: [
+            CupertinoSliverRefreshControl(
+              onRefresh: () async {
+                await controller.loadNews();
+              },
+            ),
             UserSilverAppBar(),
 
             SliverToBoxAdapter(
